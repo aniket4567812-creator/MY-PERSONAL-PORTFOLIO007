@@ -1,0 +1,114 @@
+/* ----------------------------
+   TYPING EFFECT — "Hi, I'm Aniket Chaudhary"
+---------------------------- */
+(function () {
+    const el = document.getElementById('typed');
+    const text = "Hi, I'm Aniket Chaudhary";
+    let i = 0, forward = true;
+
+    function tick() {
+        el.textContent = text.slice(0, i);
+
+        if (forward) {
+            i++;
+            if (i > text.length) {
+                forward = false;
+                setTimeout(() => { i = text.length; }, 700);
+            }
+        } else {
+            i--;
+            if (i <= 0) {
+                forward = true;
+                i = 0;
+            }
+        }
+        setTimeout(tick, forward ? 90 : 45);
+    }
+    tick();
+})();
+
+
+
+/* ----------------------------
+   CANVAS PARTICLE ANIMATION
+---------------------------- */
+(function () {
+    const canvas = document.getElementById('techCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let DPR = Math.max(1, window.devicePixelRatio || 1);
+
+    function resize() {
+        canvas.width = Math.floor(canvas.clientWidth * DPR);
+        canvas.height = Math.floor(canvas.clientHeight * DPR);
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    const cfg = { count: 55, speed: 0.45, linkDist: 120 };
+    let parts = [];
+
+    function rand(a, b) { return Math.random() * (b - a) + a; }
+
+    function create() {
+        parts = [];
+        for (let i = 0; i < cfg.count; i++) {
+            parts.push({
+                x: rand(0, canvas.clientWidth),
+                y: rand(0, canvas.clientHeight),
+                vx: rand(-cfg.speed, cfg.speed),
+                vy: rand(-cfg.speed, cfg.speed),
+                r: rand(0.6, 2.2),
+                a: rand(0.35, 0.9)
+            });
+        }
+    }
+    create();
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+        parts.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < -10) p.x = canvas.clientWidth + 10;
+            if (p.x > canvas.clientWidth + 10) p.x = -10;
+            if (p.y < -10) p.y = canvas.clientHeight + 10;
+            if (p.y > canvas.clientHeight + 10) p.y = -10;
+        });
+
+        // connections
+        ctx.lineWidth = 0.8;
+        for (let i = 0; i < parts.length; i++) {
+            for (let j = i + 1; j < parts.length; j++) {
+                const a = parts[i], b = parts[j];
+                const dx = a.x - b.x, dy = a.y - b.y;
+                const d = Math.hypot(dx, dy);
+
+                if (d < cfg.linkDist) {
+                    ctx.strokeStyle = `rgba(120,170,255,${(1 - d / cfg.linkDist) * 0.12})`;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // dots
+        parts.forEach(p => {
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(126,231,255,${p.a})`;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+})();
