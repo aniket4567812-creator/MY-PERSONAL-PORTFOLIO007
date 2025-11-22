@@ -1,24 +1,3 @@
-<!--
-  FINAL index.html — copy & paste into your new repo root.
-  Uploaded local source (for reference): /mnt/data/index.html
-  Folder structure (create these in your repo):
-  /
-    index.html
-    /certificates/
-      cyber_security_awareness_junior.jpg
-      software-engineering-simulation.jpg
-      aws-devops-professional-training.jpg
-      aws_solutions_architecture_job_simulation.jpg
-      copilot_startups.jpg
-      copilot_foundations_certification.jpg
-    /projects/
-      unit_converter.jpg
-      health_tracker.jpg
-      sports_tracker.jpg
-      chatbot.jpg
-      beatx_music.jpg
--->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,10 +30,8 @@
       line-height:1.45;
     }
     a{color:var(--accent-c);text-decoration:none}
-
     .container{width:92%;max-width:var(--maxw);margin:0 auto;padding:22px}
 
-    /* header */
     header{position:sticky;top:10px;z-index:80}
     .topbar{
       display:flex;align-items:center;gap:16px;padding:12px;border-radius:12px;
@@ -66,17 +43,15 @@
     nav a{color:#dfeaf8;padding:8px 12px;border-radius:10px;font-weight:700}
     nav a:hover{background:rgba(255,255,255,0.02);transform:translateY(-3px)}
 
-    /* hero */
     .hero{ display:grid; grid-template-columns: 1fr 480px; gap:28px; align-items:center; padding:56px 0; }
     @media (max-width:980px){ .hero{ grid-template-columns: 1fr; } .hero-right{height:340px} }
 
     .hero-left h1{ font-size:44px; line-height:1.02; margin-bottom:8px; font-weight:900; color:#fff }
-    .typed { display:inline-block; font-weight:900; font-size:44px }
+    .typed { display:inline-block }
     .cursor { display:inline-block; width:3px; height:38px; background:var(--accent-c); margin-left:8px; vertical-align:middle; animation:blink .7s infinite; border-radius:2px }
     @keyframes blink{ 0%{opacity:1}50%{opacity:0}100%{opacity:1} }
 
-    /* user requested: remove subtitle under typing (kept minimal) */
-    .lead{ color:var(--muted); max-width:60ch; margin-top:12px; font-size:16px; display:none }
+    .lead{ color:var(--muted); max-width:60ch; margin-top:12px; font-size:16px }
 
     .cta-row{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap }
     .btn{ padding:11px 18px; border-radius:12px; font-weight:800; cursor:pointer; border:0; transition: all .22s var(--ease) }
@@ -84,7 +59,6 @@
     .btn-ghost{ background:transparent; border:1px solid rgba(255,255,255,0.04); color:#e6eef8 }
     .btn:hover{ transform: translateY(-6px) }
 
-    /* hero right */
     .hero-right{
       position:relative;border-radius:var(--radius);overflow:hidden;height:420px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -94,9 +68,9 @@
     .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.26; z-index:0 }
     #techCanvas{ position:absolute; inset:0; width:100%; height:100%; z-index:1; display:block }
 
-    /* projects */
     .section{ padding:56px 0; position:relative; z-index:2 }
     .section h2{ font-size:22px; color:var(--accent-p); margin-bottom:8px }
+
     .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:18px; margin-top:18px }
     .proj{ background:var(--panel); padding:14px; border-radius:12px; transition: transform .28s var(--ease), box-shadow .28s var(--ease); border:1px solid rgba(255,255,255,0.03) }
     .proj:hover{ transform:translateY(-8px); box-shadow: 0 30px 80px rgba(127,90,240,0.06) }
@@ -104,12 +78,10 @@
     .proj h3{ color:#fff; margin:8px 0 6px; font-size:16px }
     .proj p{ color:var(--muted); font-size:14px }
 
-    /* certificates grid - square thumbnails */
     .cert-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px; margin-top:18px }
     .cert-card{
       display:block; background:var(--glass); padding:12px; border-radius:12px; cursor:pointer;
       transition: transform .22s var(--ease), box-shadow .22s var(--ease); border:1px solid rgba(255,255,255,0.02);
-      text-decoration:none;
     }
     .cert-card:hover{ transform:translateY(-6px); box-shadow: 0 24px 70px rgba(0,0,0,0.45) }
     .thumb {
@@ -117,268 +89,237 @@
       aspect-ratio: 16/10;
       background:#000;
       border-radius:8px;
-      display:block;
       object-fit:cover;
     }
     .cert-card .label{ font-weight:800; color:#fff; margin-top:8px; display:block }
     .cert-card p{ color:var(--muted); font-size:13px; margin-top:6px }
 
     footer{ padding:28px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); margin-top:28px; font-weight:700 }
-
-    @media (max-width:720px){
-      nav{ display:none }
-      .hero{ padding:28px 0 }
-      .hero-right{ height:300px }
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container topbar">
-      <div class="brand">ANIKET CHAUDHARY</div>
-      <nav>
-        <a href="#hero">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<header>
+  <div class="container topbar">
+    <div class="brand">ANIKET CHAUDHARY</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-left">
+    <h1><span id="typed" class="typed"></span><span class="cursor"></span></h1>
+    <p class="lead">Engineering digital experiences that speak for themselves.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
     </div>
-  </header>
+  </div>
 
-  <main class="container">
-    <!-- HERO -->
-    <section id="hero" class="hero" aria-label="Hero">
-      <div class="hero-left">
-        <h1>
-          <span id="typed" class="typed"></span><span class="cursor" aria-hidden="true"></span>
-        </h1>
+  <div class="hero-right">
+    <video class="hero-video" autoplay muted loop><source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-hud-animated-visual-4909-large.mp4"></video>
+    <canvas id="techCanvas"></canvas>
+  </div>
+</section>
 
-        <!-- user requested: no line under typing, so lead hidden -->
-        <p class="lead" aria-hidden="true">Engineering digital experiences that speak for themselves.</p>
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2>Selected Projects</h2>
+  <p class="lead" style="color:var(--muted)">Handpicked projects with demos.</p>
 
-        <div class="cta-row" style="margin-top:20px">
-          <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('certificates').scrollIntoView({behavior:'smooth'})">Certificates</button>
-        </div>
-      </div>
+  <div class="projects-grid">
 
-      <div class="hero-right" aria-hidden="false">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-hud-animated-visual-4909-large.mp4" type="video/mp4">
-        </video>
+    <article class="proj">
+      <img src="projects/unit_converter.jpg" alt="Unit Converter">
+      <h3>Unit Converter</h3>
+      <p>Fast, minimal unit converter.</p>
+      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/UNIT-CONVERTER-BY-ANIKET/" target="_blank">Open Demo</a>
+    </article>
 
-        <canvas id="techCanvas" aria-hidden="true"></canvas>
-      </div>
-    </section>
+    <article class="proj">
+      <img src="projects/health_tracker.jpg" alt="Health Tracker">
+      <h3>Health Tracker</h3>
+      <p>Track BMI, calories, daily metrics.</p>
+      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/HEALTH-TRACKER-BY-ANIKET-/" target="_blank">Open Demo</a>
+    </article>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section" aria-label="Projects">
-      <h2>Selected Projects</h2>
-      <p class="lead" style="margin-top:6px;color:var(--muted);display:block">Handpicked projects with demos.</p>
+    <article class="proj">
+      <img src="projects/sports_tracker.jpg" alt="Sports Tracker">
+      <h3>Sports Tracker</h3>
+      <p>Track workouts & performance.</p>
+      <a class="btn btn-primary" href="#" target="_blank">Open Demo</a>
+    </article>
 
-      <div class="projects-grid" role="list">
-        <article class="proj" role="listitem">
-          <img src="projects/unit_converter.jpg" alt="Unit Converter">
-          <h3>Unit Converter</h3>
-          <p>Fast, accurate and minimal unit converter.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/UNIT-CONVERTER-BY-ANIKET/" target="_blank" rel="noopener">Open Demo</a>
-          </div>
-        </article>
+    <article class="proj">
+      <img src="projects/beatx_music.jpg" alt="BeatX">
+      <h3>BeatX Music Player</h3>
+      <p>Sleek modern music player.</p>
+      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/BEATX-MUSIC-PLAYER-/" target="_blank">Open Demo</a>
+    </article>
 
-        <article class="proj" role="listitem">
-          <img src="projects/health_tracker.jpg" alt="Health Tracker">
-          <h3>Health Tracker</h3>
-          <p>Track BMI, calories and daily metrics.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/HEALTH-TRACKER-BY-ANIKET-/" target="_blank" rel="noopener">Open Demo</a>
-          </div>
-        </article>
+    <article class="proj">
+      <img src="projects/chatbot.jpg" alt="Chatbot">
+      <h3>AI Chatbot</h3>
+      <p>Smart conversational assistant.</p>
+      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/AIChatbot/" target="_blank">Open Demo</a>
+    </article>
 
-        <article class="proj" role="listitem">
-          <img src="projects/sports_tracker.jpg" alt="Sports Tracker">
-          <h3>Sports Tracker</h3>
-          <p>Sports tracking dashboard for training & stats.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/FITNESS-TRACKER-BY-ANIKET/" target="_blank" rel="noopener">Open Demo</a>
-          </div>
-        </article>
+  </div>
+</section>
 
-        <article class="proj" role="listitem">
-          <img src="projects/beatx_music.jpg" alt="BeatX Music Player">
-          <h3>BeatX Music Player</h3>
-          <p>Modern music player with playlists and smooth UI.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/BEATX-MUSIC-PLAYER-/" target="_blank" rel="noopener">Open Demo</a>
-          </div>
-        </article>
-
-        <article class="proj" role="listitem">
-          <img src="projects/chatbot.jpg" alt="AI Chatbot">
-          <h3>AI Chatbot</h3>
-          <p>Smart AI conversational assistant.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/AIChatbot/" target="_blank" rel="noopener">Open Demo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-   <section id="certificates" class="section" aria-label="Certificates">
+<!-- CERTIFICATES -->
+<section id="certificates" class="section">
   <h2>Certificates</h2>
-  <p class="lead" style="margin-top:6px;color:var(--muted)">Click a certificate — it will open in the same tab.</p>
+  <p class="lead" style="color:var(--muted)">Click a certificate to open.</p>
 
-  <div class="cert-grid" role="list">
+  <div class="cert-grid">
 
-    <!-- 1 -->
-    <a class="cert-card" href="certificates/cyber_security_awareness_junior.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/cyber_security_awareness_junior.jpg" alt="Cyber Security Certificate">
-      <span class="label">Cyber Security Certificate</span>
-      <p>Completed government-led cyber security awareness quiz with distinction.</p>
+    <a class="cert-card" href="certificates/cyber_security_awareness_junior.jpg" target="_blank">
+      <img class="thumb" src="certificates/cyber_security_awareness_junior.jpg">
+      <span class="label">Cyber Security Awareness</span>
+      <p>Government cyber security quiz.</p>
     </a>
 
-    <!-- 2 -->
-    <a class="cert-card" href="certificates/software-engineering-simulation.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/software-engineering-simulation.jpg" alt="Software Engineering Simulation">
+    <a class="cert-card" href="certificates/software-engineering-simulation.jpg" target="_blank">
+      <img class="thumb" src="certificates/software-engineering-simulation.jpg">
       <span class="label">Software Engineering Simulation</span>
-      <p>Completed industry simulation with real engineering tasks.</p>
+      <p>Industry real-world simulation.</p>
     </a>
 
-    <!-- 3 -->
-    <a class="cert-card" href="certificates/aws-devops-professional-training.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/aws-devops-professional-training.jpg" alt="AWS DevOps Professional">
+    <a class="cert-card" href="certificates/aws-devops-professional-training.jpg" target="_blank">
+      <img class="thumb" src="certificates/aws-devops-professional-training.jpg">
       <span class="label">AWS DevOps Professional</span>
-      <p>Completed AWS Certified DevOps Engineer training.</p>
+      <p>Complete DevOps Engineer training.</p>
     </a>
 
-    <!-- 4 -->
-    <a class="cert-card" href="certificates/aws_solutions_architecture_job_simulation.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/aws_solutions_architecture_job_simulation.jpg" alt="AWS Solutions Architect Simulation">
-      <span class="label">AWS Solutions Architect Simulation</span>
-      <p>Completed solutions architecture job simulation.</p>
+    <a class="cert-card" href="certificates/aws_solutions_architecture_job_simulation.jpg" target="_blank">
+      <img class="thumb" src="certificates/aws_solutions_architecture_job_simulation.jpg">
+      <span class="label">AWS Solutions Architect</span>
+      <p>AWS job simulation certification.</p>
     </a>
 
-    <!-- 5 -->
-    <a class="cert-card" href="certificates/copilot_startups.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/copilot_startups.jpg" alt="Copilot for Startups">
-      <span class="label">Copilot For Startups</span>
-      <p>Earned certification for building tools & workflows using Copilot.</p>
+    <a class="cert-card" href="certificates/copilot_startups.jpg" target="_blank">
+      <img class="thumb" src="certificates/copilot_startups.jpg">
+      <span class="label">Copilot for Startups</span>
+      <p>Built tools using Microsoft Copilot.</p>
     </a>
 
-    <!-- 6 -->
-    <a class="cert-card" href="certificates/copilot_foundations_certification.jpg" target="_self" role="listitem">
-      <img class="thumb" src="certificates/copilot_foundations_certification.jpg" alt="Copilot Foundations">
+    <!-- FIXED BLOCK -->
+    <a class="cert-card" href="certificates/Copilot%20Foundations%20Certification.jpg" target="_blank">
+      <img class="thumb" src="certificates/Copilot%20Foundations%20Certification.jpg">
       <span class="label">Copilot Foundations</span>
-      <p>Completed Microsoft SkillUp Copilot Foundations certification.</p>
+      <p>Microsoft SkillUp certification.</p>
     </a>
 
   </div>
 </section>
- 
-    <!-- CONTACT -->
-    <section id="contact" class="section" aria-label="Contact">
-      <h2>Contact</h2>
-      <p style="color:var(--muted)">Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
-      <p style="color:var(--muted)">GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank" rel="noopener">github.com/aniket4567812-creator</a></p>
-    </section>
-  </main>
 
-  <footer>
-    Engineering digital experiences that speak for themselves. <span style="color:#ff6b81">❤️</span> Aniket Chaudhary
-  </footer>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p style="color:var(--muted)">Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
+  <p style="color:var(--muted)">GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank">github.com/aniket4567812-creator</a></p>
+</section>
 
-  <script>
-    /* ----------------- TYPING EFFECT (simple & fast) ----------------- */
-    (function(){
-      const el = document.getElementById('typed');
-      const text = "Hi, I'm Aniket Chaudhary";
-      let i = 0, forward = true;
+</main>
 
-      function tick(){
-        el.textContent = text.slice(0, i);
-        if (forward) {
-          i++;
-          if (i > text.length) { forward = false; setTimeout(()=>{ i = text.length; }, 800); }
-        } else {
-          i--;
-          if (i <= 0) { forward = true; i = 0; }
+<footer>
+  Engineering digital experiences that speak for themselves. ❤️ Aniket Chaudhary
+</footer>
+
+<script>
+/* TYPING EFFECT */
+(function(){
+  const el = document.getElementById('typed');
+  const text = "Hi, I'm Aniket Chaudhary";
+  let i = 0, forward = true;
+
+  function tick(){
+    el.textContent = text.slice(0, i);
+    if (forward) { i++; if (i > text.length) { forward = false; setTimeout(()=>{ i = text.length; }, 700); } }
+    else { i--; if (i <= 0) { forward = true; i = 0; } }
+    setTimeout(tick, forward ? 90 : 40);
+  }
+  tick();
+})();
+
+/* CANVAS PARTICLES */
+(function(){
+  const canvas = document.getElementById('techCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  let DPR = Math.max(1, window.devicePixelRatio || 1);
+
+  function resize(){
+    canvas.width = canvas.clientWidth * DPR;
+    canvas.height = canvas.clientHeight * DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const cfg = { count: 55, speed: 0.45, maxLink: 120 };
+  let parts = [];
+
+  function rand(a,b){ return Math.random()*(b-a)+a; }
+  function create(){
+    parts = [];
+    for(let i=0;i<cfg.count;i++){
+      parts.push({
+        x: rand(0, canvas.clientWidth),
+        y: rand(0, canvas.clientHeight),
+        vx: rand(-cfg.speed, cfg.speed),
+        vy: rand(-cfg.speed, cfg.speed),
+        r: rand(0.6,2.2),
+        a: rand(0.35,0.9)
+      });
+    }
+  }
+  create();
+
+  function step(){
+    ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+
+    parts.forEach(p=>{
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = canvas.clientWidth + 10;
+      if (p.x > canvas.clientWidth + 10) p.x = -10;
+      if (p.y < -10) p.y = canvas.clientHeight + 10;
+      if (p.y > canvas.clientHeight + 10) p.y = -10;
+    });
+
+    ctx.lineWidth = 0.8;
+    for (let i=0;i<parts.length;i++){
+      for (let j=i+1;j<parts.length;j++){
+        const a = parts[i], b = parts[j];
+        const d = Math.hypot(a.x-b.x, a.y-b.y);
+        if (d < cfg.maxLink){
+          ctx.strokeStyle = `rgba(120,170,255,${(1-d/cfg.maxLink)*0.12})`;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
         }
-        setTimeout(tick, forward ? 90 : 40);
       }
-      tick();
-    })();
+    }
 
-    /* ----------------- PARTICLE GRID / BACKDROP ----------------- */
-    (function(){
-      const canvas = document.getElementById('techCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d', { alpha: true });
-      let DPR = Math.max(1, window.devicePixelRatio || 1);
+    parts.forEach(p=>{
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(126,231,255,${p.a})`;
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    });
 
-      function resize(){
-        canvas.width = Math.floor(canvas.clientWidth * DPR);
-        canvas.height = Math.floor(canvas.clientHeight * DPR);
-        ctx.setTransform(DPR,0,0,DPR,0,0);
-      }
-      window.addEventListener('resize', resize);
-      resize();
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+</script>
 
-      const cfg = { count: 50, speed: 0.4, maxLink: 120 };
-      let parts = [];
-
-      function rand(a,b){ return Math.random()*(b-a)+a; }
-      function create(){
-        parts = [];
-        for(let i=0;i<cfg.count;i++){
-          parts.push({
-            x: rand(0, canvas.clientWidth),
-            y: rand(0, canvas.clientHeight),
-            vx: rand(-cfg.speed, cfg.speed),
-            vy: rand(-cfg.speed, cfg.speed),
-            r: rand(0.6,2.2),
-            a: rand(0.35,0.9)
-          });
-        }
-      }
-      create();
-
-      function step(){
-        ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-        ctx.fillStyle = 'rgba(6,10,18,0.10)';
-        ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);
-
-        // move & wrap
-        parts.forEach(p=>{
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < -10) p.x = canvas.clientWidth + 10;
-          if (p.x > canvas.clientWidth + 10) p.x = -10;
-          if (p.y < -10) p.y = canvas.clientHeight + 10;
-          if (p.y > canvas.clientHeight + 10) p.y = -10;
-        });
-
-        // links
-        ctx.lineWidth = 0.8;
-        for (let i=0;i<parts.length;i++){
-          for (let j=i+1;j<parts.length;j++){
-            const a = parts[i], b = parts[j];
-            const dx = a.x - b.x, dy = a.y - b.y;
-            const d = Math.hypot(dx,dy);
-            if (d < cfg.maxLink){
-              ctx.strokeStyle = `rgba(120,170,255,${(1 - d/cfg.maxLink) * 0.12})`;
-              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
-            }
-          }
-        }
-
-        // dots
-        parts.forEach(p=>{
-          ctx.beginPath(); ctx.fillStyle = `rgba(126,231,255,${p.a})`; ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-        });
-
-        requestAnimationFrame(step);
-      }
-      step();
-    })();
-  </script>
 </body>
 </html>
