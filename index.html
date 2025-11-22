@@ -3,362 +3,419 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aniket Chaudhary — Portfolio</title>
-  <meta name="description" content=© 2025 Aniket Chaudhary. All rights reserved. Designed & coded by Aniket
+  <title>Aniket Chaudhary — Portfolio (Futuristic Background)</title>
+  <meta name="description" content="Engineering digital experiences that speak for themselves.">
 
   <style>
+    /* ---------------- Theme / Base ---------------- */
     :root{
-      --bg-1:#060914;
-      --bg-2:#0f1622;
-      --panel: rgba(255,255,255,0.03);
-      --glass: rgba(255,255,255,0.04);
-      --muted:#92a6be;
+      --bg-1:#061123;
+      --bg-2:#0f1d34;
+      --muted:#9fb0c8;
       --accent-c:#7ee7ff;
-      --accent-p:#8b63ff;
-      --radius:14px;
-      --maxw:1200px;
+      --accent-p:#9a6cff;
+      --accent-2:#ff5ea1;
+      --glass: rgba(255,255,255,0.04);
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --radius:16px;
+      --maxw:1180px;
       --ease:cubic-bezier(.2,.9,.2,1);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box}
-
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{
-      font-family: Inter, system-ui;
+      font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
       color:#eaf3ff;
       -webkit-font-smoothing:antialiased;
-      line-height:1.45;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
     }
-
     a{color:var(--accent-c);text-decoration:none}
+    .container{width:92%;max-width:var(--maxw);margin:0 auto;padding:28px 18px}
 
-    .container{width:92%;max-width:var(--maxw);margin:0 auto;padding:22px}
-
-    header{position:sticky;top:10px;z-index:80}
-
+    /* Topbar */
+    header{position:sticky;top:12px;z-index:120}
     .topbar{
-      display:flex;align-items:center;gap:16px;padding:12px;border-radius:12px;
-      background:rgba(255,255,255,0.02);
+      display:flex;align-items:center;gap:18px;padding:12px;border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(2,8,23,0.45);
     }
-
     .brand{font-weight:900;letter-spacing:0.6px}
+    nav{margin-left:auto;display:flex;gap:8px;align-items:center}
+    nav a{color:#dfeaf8;padding:8px 12px;border-radius:10px;font-weight:700}
+    nav a:hover{background:rgba(255,255,255,0.02);transform:translateY(-3px)}
 
-    nav{margin-left:auto;display:flex;gap:8px}
-    nav a{padding:8px 12px;border-radius:10px;font-weight:700}
-    nav a:hover{background:rgba(255,255,255,0.05)}
+    /* HERO LAYOUT */
+    .hero{ display:grid; grid-template-columns: 1fr 520px; gap:28px; align-items:center; padding:64px 0 36px; position:relative; }
+    @media (max-width:980px){ .hero{ grid-template-columns: 1fr; } .hero-right{height:360px} }
 
-    /* HERO */
-    .hero{
-      display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:56px 0;
-    }
-    @media(max-width:980px){.hero{grid-template-columns:1fr;}.hero-right{height:340px;}}
+    .hero-left h1{ font-size:46px; line-height:1.02; margin-bottom:8px; font-weight:900; color:#fff }
+    .typed { display:inline-block; font-weight:900 }
+    .cursor { display:inline-block; width:4px; height:44px; background:var(--accent-c); margin-left:10px; vertical-align:middle; animation:blink .7s infinite; border-radius:3px }
+    @keyframes blink{ 0%{opacity:1}50%{opacity:0}100%{opacity:1} }
 
-    .hero-left h1{font-size:44px;font-weight:900}
-    .cursor{width:3px;height:38px;background:var(--accent-c);display:inline-block;animation:blink .7s infinite;margin-left:6px}
-    @keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+    .lead{ color:var(--muted); max-width:64ch; margin-top:12px; font-size:16px }
+    .cta-row{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap }
+    .btn{ padding:12px 18px; border-radius:12px; font-weight:800; cursor:pointer; border:0; transition: all .22s var(--ease) }
+    .btn-primary{ background: linear-gradient(90deg,var(--accent-p),var(--accent-c)); color:#041323; box-shadow: 0 10px 40px rgba(124,80,240,0.08) }
+    .btn-ghost{ background:transparent; border:1px solid rgba(255,255,255,0.04); color:#e6eef8 }
+    .btn:hover{ transform: translateY(-6px) }
 
-    .lead{color:var(--muted);margin-top:12px;max-width:60ch}
-
-    .cta-row{display:flex;gap:12px;margin-top:18px}
-
-    .btn{padding:11px 18px;border-radius:12px;font-weight:800;cursor:pointer;border:0;transition:.22s}
-    .btn-primary{background:linear-gradient(90deg,var(--accent-p),var(--accent-c));color:#041323}
-    .btn-ghost{border:1px solid rgba(255,255,255,0.04)}
-
+    /* HERO RIGHT — full futuristic background area */
     .hero-right{
-      position:relative;border-radius:var(--radius);overflow:hidden;height:420px;
-      background:rgba(255,255,255,0.02);
+      position:relative;border-radius:20px;overflow:hidden;height:480px;
+      background: radial-gradient(800px 400px at 10% 10%, rgba(126,231,255,0.02), transparent 6%),
+                  radial-gradient(700px 350px at 90% 85%, rgba(154,108,255,0.02), transparent 8%),
+                  linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
       border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 30px 100px rgba(2,8,23,0.6);
     }
 
-    .hero-video{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.26;
+    /* Animated gradient energy bands (CSS layers) */
+    .energy-band{
+      position:absolute; left:-20%; right:-20%; height:220px; border-radius:50%;
+      filter: blur(60px);
+      opacity:0.9; mix-blend-mode:screen;
+      transform: translateY(0) rotate(0deg) scale(1.05);
+      animation:bandFloat 8s ease-in-out infinite alternate;
+    }
+    .energy-band.a{ top:10%; background: linear-gradient(90deg, rgba(126,231,255,0.12), rgba(154,108,255,0.10)); animation-duration:9s; }
+    .energy-band.b{ top:30%; background: linear-gradient(90deg, rgba(255,94,161,0.10), rgba(126,231,255,0.06)); animation-duration:12s; }
+    .energy-band.c{ top:52%; background: linear-gradient(90deg, rgba(154,108,255,0.08), rgba(255,94,161,0.05)); animation-duration:14s; }
+    @keyframes bandFloat{ to { transform: translateY(-14%) rotate(-6deg) scale(1.07);} }
+
+    /* Canvas particle layer sits above bands */
+    #particleCanvas{ position:absolute; inset:0; z-index:2; display:block; pointer-events:none; }
+
+    /* subtle grid overlay */
+    .grid-overlay{
+      position:absolute; inset:0; z-index:3; mix-blend-mode:overlay; opacity:0.06; background-image:
+        linear-gradient(transparent 0 1px, rgba(255,255,255,0.02) 1px),
+        linear-gradient(90deg, transparent 0 1px, rgba(255,255,255,0.02) 1px);
+      background-size: 60px 60px, 60px 60px;
+      pointer-events:none;
     }
 
-    /* PROJECTS */
-    .section{padding:56px 0}
-    .section h2{font-size:22px;color:var(--accent-p)}
+    /* Panel card */
+    .panel-card{ position:relative; z-index:4; width:78%; max-width:420px; margin: auto; padding:18px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)); border:1px solid rgba(255,255,255,0.04); backdrop-filter: blur(8px); box-shadow: 0 20px 60px rgba(2,8,23,0.5); text-align:center; }
+    .panel-card h4{ margin-bottom:8px; color:#fff; font-size:18px; }
+    .panel-card p{ color:var(--muted); font-size:14px; margin-bottom:12px }
 
-    .projects-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px;
+    /* Sections */
+    .section{ padding:56px 0; position:relative; z-index:6 }
+    .section h2{ font-size:22px; color:var(--accent-p); margin-bottom:8px }
+    .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:18px; margin-top:18px }
+    .proj{ background:var(--card-bg); padding:16px; border-radius:14px; transition: transform .28s var(--ease), box-shadow .28s var(--ease); border:1px solid rgba(255,255,255,0.03); display:flex; flex-direction:column; gap:10px; min-height:260px }
+    .proj:hover{ transform:translateY(-8px); box-shadow: 0 30px 80px rgba(127,90,240,0.06) }
+    .proj img{ width:100%; height:150px; object-fit:cover; border-radius:10px; flex-shrink:0 }
+    .proj h3{ color:#fff; margin:4px 0 6px; font-size:18px }
+    .proj p{ color:var(--muted); font-size:14px; flex-grow:1; margin-bottom:6px; line-height:1.4 }
+    .proj p::after{ content:""; display:block; height:6px } /* ensure last line visible */
+
+    .cert-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:18px }
+    .cert-card{ display:block; padding:12px; border-radius:12px; cursor:pointer; transition: transform .22s var(--ease), box-shadow .22s var(--ease); border:1px solid rgba(255,255,255,0.02); text-decoration:none; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008)); }
+    .cert-card:hover{ transform:translateY(-6px); box-shadow: 0 24px 70px rgba(0,0,0,0.45) }
+    .thumb{ width:100%; aspect-ratio: 16/10; object-fit:cover; border-radius:8px; display:block; background:#000 }
+    .cert-card .label{ font-weight:800; color:#fff; margin-top:8px; display:block }
+    .cert-card p{ color:var(--muted); font-size:13px; margin-top:6px }
+
+    footer{ padding:34px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); margin-top:28px; font-weight:700 }
+
+    @media (max-width:880px){
+      .hero{ grid-template-columns: 1fr; gap:18px }
+      .hero-right{ height:360px }
+      .panel-card{ width:86% }
+    }
+    @media (max-width:520px){
+      .hero-left h1{ font-size:30px }
+      .cursor{ height:28px }
     }
 
-    .proj{
-      background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-      transition:.28s;
-    }
-    .proj:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(127,90,240,0.06)}
-
-    .proj img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-
-    .proj h3{margin:8px 0 6px;font-size:16px;color:#fff}
-
-    .proj p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.4;
-      margin-bottom:10px; /* Fix for cut text */
-    }
-
-    /* CERTIFICATES */
-    .cert-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px;
-    }
-
-    .cert-card{
-      padding:12px;border-radius:12px;background:var(--glass);
-      border:1px solid rgba(255,255,255,0.02);transition:.22s;
-    }
-    .cert-card:hover{transform:translateY(-6px);box-shadow:0 24px 70px rgba(0,0,0,0.45)}
-
-    .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px}
-
-    .label{font-weight:800;color:#fff;margin-top:8px}
-
-    .cert-card p{font-size:13px;color:var(--muted);margin-top:6px}
-
-    footer{
-      padding:28px;text-align:center;margin-top:28px;
-      color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);
-    }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container topbar">
-    <div class="brand">ANIKET CHAUDHARY</div>
-    <nav>
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-<!-- HERO -->
-<section id="hero" class="hero">
-  <div class="hero-left">
-    <h1><span id="typed"></span><span class="cursor"></span></h1>
-    <p class="lead">Engineering digital experiences that speak for themselves.</p>
-
-    <div class="cta-row">
-      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-        View Projects
-      </button>
-      <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-        Contact
-      </button>
+  <header>
+    <div class="container topbar">
+      <div class="brand">ANIKET CHAUDHARY</div>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="hero-right">
-    <video class="hero-video" autoplay muted loop>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-hud-animated-visual-4909-large.mp4">
-    </video>
-    <canvas id="techCanvas"></canvas>
-  </div>
-</section>
+  <main class="container">
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div>
+        <h1><span id="typed">Hi, I'm Aniket Chaudhary</span><span class="cursor" aria-hidden="true"></span></h1>
+        <p class="lead">Engineering digital experiences that speak for themselves. Where creativity meets technology — and ideas turn into reality.</p>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <h2>Selected Projects</h2>
-  <p class="lead" style="color:var(--muted)">Handpicked projects with demos.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+        </div>
+      </div>
 
-  <div class="projects-grid">
+      <div class="hero-right" aria-hidden="false">
+        <!-- animated energy bands -->
+        <div class="energy-band a" aria-hidden="true"></div>
+        <div class="energy-band b" aria-hidden="true"></div>
+        <div class="energy-band c" aria-hidden="true"></div>
 
-    <article class="proj">
-      <img src="projects/unit_converter.jpg">
-      <h3>Unit Converter</h3>
-      <p>A fast and intuitive unit converter designed for precision and everyday usability.</p>
-      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/UNIT-CONVERTER-BY-ANIKET/" target="_blank">Open Demo</a>
-    </article>
+        <!-- particle canvas -->
+        <canvas id="particleCanvas" aria-hidden="true"></canvas>
 
-    <article class="proj">
-      <img src="projects/health_tracker.jpg">
-      <h3>Health Tracker</h3>
-      <p>Monitor BMI, calories, hydration, and wellness insights with a clean modern UI.</p>
-      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/HEALTH-TRACKER-BY-ANIKET-/" target="_blank">Open Demo</a>
-    </article>
+        <!-- subtle grid -->
+        <div class="grid-overlay" aria-hidden="true"></div>
 
-    <article class="proj">
-      <img src="projects/sports_tracker.jpg">
-      <h3>Sports Tracker</h3>
-      <p>A performance-focused trainer for tracking workouts, stamina, and progress visually.</p>
-      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/FITNESS-TRACKER-BY-ANIKET/" target="_blank">Open Demo</a>
-    </article>
+        <!-- overlay panel -->
+        <div class="panel-card" role="region" aria-label="About card">
+          <h4>Futuristic Motion Background</h4>
+          <p>Animated gradient energy bands + layered 3D particles — alive, high-tech look.</p>
+          <div style="display:flex;gap:8px;justify-content:center">
+            <a class="btn btn-primary" href="#certificates">Certificates</a>
+            <a class="btn btn-ghost" href="https://github.com/aniket4567812-creator" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <article class="proj">
-      <img src="projects/beatx_music.jpg">
-      <h3>BeatX Music Player</h3>
-      <p>A sleek, responsive music player with smooth animations and custom playlists.</p>
-      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/BEATX-MUSIC-PLAYER-/" target="_blank">Open Demo</a>
-    </article>
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-label="Projects">
+      <h2>Selected Projects</h2>
+      <p class="lead" style="color:var(--muted)">Handpicked projects with demos.</p>
 
-    <article class="proj">
-      <img src="projects/chatbot.jpg">
-      <h3>AI Chatbot</h3>
-      <p>An intelligent conversational assistant built for fast, contextual responses.</p>
-      <a class="btn btn-primary" href="https://aniket4567812-creator.github.io/AIChatbot/" target="_blank">Open Demo</a>
-    </article>
+      <div class="projects-grid" role="list">
+        <article class="proj" role="listitem">
+          <img src="projects/unit_converter.jpg" alt="Unit Converter">
+          <h3>Unit Converter</h3>
+          <p>A fast and intuitive unit converter designed for precision and everyday usability — lightweight, accurate and mobile-ready.</p>
+          <div class="actions"><a class="btn btn-primary" href="https://aniket4567812-creator.github.io/UNIT-CONVERTER-BY-ANIKET/" target="_blank" rel="noopener">Open Demo</a></div>
+        </article>
 
-  </div>
-</section>
+        <article class="proj" role="listitem">
+          <img src="projects/health_tracker.jpg" alt="Health Tracker">
+          <h3>Health Tracker</h3>
+          <p>Monitor BMI, calories, hydration and wellness insights through a clean dashboard — built for clarity and speed.</p>
+          <div class="actions"><a class="btn btn-primary" href="https://aniket4567812-creator.github.io/HEALTH-TRACKER-BY-ANIKET-/" target="_blank" rel="noopener">Open Demo</a></div>
+        </article>
 
-<!-- CERTIFICATES -->
-<section id="certificates" class="section">
-  <h2>Certificates</h2>
-  <p class="lead" style="color:var(--muted)">Click a certificate to open.</p>
+        <article class="proj" role="listitem">
+          <img src="projects/sports_tracker.jpg" alt="Sports Tracker">
+          <h3>Sports Tracker</h3>
+          <p>A performance-focused trainer for tracking workouts, stamina and progress visually — smart charts & quick logging.</p>
+          <div class="actions"><a class="btn btn-primary" href="https://aniket4567812-creator.github.io/FITNESS-TRACKER-BY-ANIKET/" target="_blank" rel="noopener">Open Demo</a></div>
+        </article>
 
-  <div class="cert-grid">
+        <article class="proj" role="listitem">
+          <img src="projects/beatx_music.jpg" alt="BeatX Music">
+          <h3>BeatX Music Player</h3>
+          <p>A sleek, responsive music player with smooth animations, playlists and an intuitive experience for listeners.</p>
+          <div class="actions"><a class="btn btn-primary" href="https://aniket4567812-creator.github.io/BEATX-MUSIC-PLAYER-/" target="_blank" rel="noopener">Open Demo</a></div>
+        </article>
 
-    <a class="cert-card" href="certificates/cyber_security_awareness_junior.jpg" target="_blank">
-      <img class="thumb" src="certificates/cyber_security_awareness_junior.jpg">
-      <span class="label">Cyber Security Awareness</span>
-      <p>Recognized for completing government-led cyber safety certification with excellence.</p>
-    </a>
+        <article class="proj" role="listitem">
+          <img src="projects/chatbot.jpg" alt="AI Chatbot">
+          <h3>AI Chatbot</h3>
+          <p>An intelligent conversational assistant built for fast, contextual responses — API-ready and extendable.</p>
+          <div class="actions"><a class="btn btn-primary" href="https://aniket4567812-creator.github.io/AIChatbot/" target="_blank" rel="noopener">Open Demo</a></div>
+        </article>
+      </div>
+    </section>
 
-    <a class="cert-card" href="certificates/software-engineering-simulation.jpg" target="_blank">
-      <img class="thumb" src="certificates/software-engineering-simulation.jpg">
-      <span class="label">Software Engineering Simulation</span>
-      <p>Completed a real-world engineering simulation involving industry-grade tasks.</p>
-    </a>
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="section" aria-label="Certificates">
+      <h2>Certificates</h2>
+      <p class="lead" style="color:var(--muted)">Click a certificate to open in the same tab.</p>
 
-    <a class="cert-card" href="certificates/aws-devops-professional-training.jpg" target="_blank">
-      <img class="thumb" src="certificates/aws-devops-professional-training.jpg">
-      <span class="label">AWS DevOps Professional</span>
-      <p>Successfully completed AWS Certified DevOps Engineer – Professional training.</p>
-    </a>
+      <div class="cert-grid" role="list">
+        <a class="cert-card" href="certificates/cyber_security_awareness_junior.jpg" target="_self" role="listitem">
+          <img class="thumb" src="certificates/cyber_security_awareness_junior.jpg" alt="Cyber Security">
+          <span class="label">Cyber Security Awareness</span>
+          <p>Recognized for completing a government cyber-safety program with distinction.</p>
+        </a>
 
-    <a class="cert-card" href="certificates/aws_solutions_architecture_job_simulation.jpg" target="_blank">
-      <img class="thumb" src="certificates/aws_solutions_architecture_job_simulation.jpg">
-      <span class="label">AWS Solutions Architect</span>
-      <p>Completed a hands-on job simulation in AWS Solution Architecture.</p>
-    </a>
+        <a class="cert-card" href="certificates/software-engineering-simulation.jpg" target="_self" role="listitem">
+          <img class="thumb" src="certificates/software-engineering-simulation.jpg" alt="Software Eng">
+          <span class="label">Software Engineering Simulation</span>
+          <p>Completed real-world engineering simulation tasks and project delivery.</p>
+        </a>
 
-    <a class="cert-card" href="certificates/copilot_startups.jpg" target="_blank">
-      <img class="thumb" src="certificates/copilot_startups.jpg">
-      <span class="label">Copilot for Startups</span>
-      <p>Completed Microsoft’s Copilot Startups training and built AI-assisted tools.</p>
-    </a>
+        <a class="cert-card" href="certificates/aws-devops-professional-training.jpg" target="_self" role="listitem">
+          <img class="thumb" src="certificates/aws-devops-professional-training.jpg" alt="AWS DevOps">
+          <span class="label">AWS DevOps Professional</span>
+          <p>Hands-on training: deployments, CI/CD and scalable infra practices.</p>
+        </a>
 
-    <a class="cert-card" href="certificates/Copilot%20Foundations%20Certification.jpg" target="_blank">
-      <img class="thumb" src="certificates/Copilot%20Foundations%20Certification.jpg">
-      <span class="label">Copilot Foundations</span>
-      <p>Certified in Microsoft SkillUp Copilot Foundations Program.</p>
-    </a>
+        <a class="cert-card" href="certificates/copilot_startups.jpg" target="_self" role="listitem">
+          <img class="thumb" src="certificates/copilot_startups.jpg" alt="Copilot Startups">
+          <span class="label">Copilot for Startups</span>
+          <p>Built AI-assisted product workflows using Microsoft Copilot technologies.</p>
+        </a>
 
-  </div>
-</section>
+        <a class="cert-card" href="certificates/Copilot%20Foundations%20Certification.jpg" target="_self" role="listitem">
+          <img class="thumb" src="certificates/Copilot%20Foundations%20Certification.jpg" alt="Copilot Foundations">
+          <span class="label">Copilot Foundations</span>
+          <p>Completed Microsoft SkillUp Copilot foundations program.</p>
+        </a>
+      </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p style="color:var(--muted)">Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
-  <p style="color:var(--muted)">GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank">github.com/aniket4567812-creator</a></p>
-</section>
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-label="Contact">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
+      <p style="color:var(--muted)">GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank" rel="noopener">github.com/aniket4567812-creator</a></p>
+    </section>
 
-</main>
+  </main>
 
-<footer>
-© 2025 Aniket Chaudhary. All rights reserved. Designed & coded by Aniket
-</footer>
+  <footer>
+    Engineering digital experiences that speak for themselves. <span style="color:#ff6b81">❤️</span> Aniket Chaudhary
+  </footer>
 
-<script>
-/* TYPING EFFECT */
-(function(){
-  const el = document.getElementById('typed');
-  const text = "Hi, I'm Aniket Chaudhary";
-  let i=0, forward=true;
+  <!-- ---------------- Scripts: 3D-like particles + small perf tweaks ---------------- -->
+  <script>
+    /* Particle system with depth layers to simulate 3D */
+    (function(){
+      const canvas = document.getElementById('particleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: true });
+      let DPR = Math.max(1, window.devicePixelRatio || 1);
 
-  function tick(){
-    el.textContent = text.slice(0,i);
-    if(forward){i++; if(i>text.length){forward=false; setTimeout(()=>{},700);}}
-    else{i--; if(i<=0){forward=true;}}
-    setTimeout(tick,forward?90:40);
-  }
-  tick();
-})();
+      function resize(){
+        const w = canvas.clientWidth || canvas.parentElement.clientWidth;
+        const h = canvas.clientHeight || canvas.parentElement.clientHeight;
+        canvas.width = Math.floor(w * DPR);
+        canvas.height = Math.floor(h * DPR);
+        ctx.setTransform(DPR,0,0,DPR,0,0);
+      }
+      window.addEventListener('resize', resize);
+      resize();
 
-/* PARTICLES */
-(function(){
-  const canvas=document.getElementById('techCanvas');
-  if(!canvas)return;
+      // three depth layers (foreground, mid, back) for parallax
+      const layers = [
+        {count: 18, speed: 0.9, size: [1.8,3.6], alpha: [0.35,0.85], blur: 0.6},
+        {count: 36, speed: 0.5, size: [1.0,2.4], alpha: [0.18,0.5], blur: 0.2},
+        {count: 80, speed: 0.18, size: [0.5,1.5], alpha: [0.08,0.28], blur: 0}
+      ];
 
-  const ctx=canvas.getContext('2d');
-  let DPR=window.devicePixelRatio||1;
+      let particles = [];
 
-  function resize(){
-    canvas.width=canvas.clientWidth*DPR;
-    canvas.height=canvas.clientHeight*DPR;
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-  }
-  window.addEventListener('resize',resize);
-  resize();
+      function rand(a,b){ return Math.random()*(b-a)+a; }
 
-  const cfg={count:55,speed:0.45,maxLink:120};
-  let parts=[];
-
-  function rand(a,b){return Math.random()*(b-a)+a;}
-
-  function create(){
-    parts=[];
-    for(let i=0;i<cfg.count;i++){
-      parts.push({
-        x:rand(0,canvas.clientWidth),
-        y:rand(0,canvas.clientHeight),
-        vx:rand(-cfg.speed,cfg.speed),
-        vy:rand(-cfg.speed,cfg.speed),
-        r:rand(0.6,2.2),
-        a:rand(0.35,0.9)
-      });
-    }
-  }
-  create();
-
-  function step(){
-    ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-
-    parts.forEach(p=>{
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<-10)p.x=canvas.clientWidth+10;
-      if(p.x>canvas.clientWidth+10)p.x=-10;
-      if(p.y<-10)p.y=canvas.clientHeight+10;
-      if(p.y>canvas.clientHeight+10)p.y=-10;
-    });
-
-    ctx.lineWidth=0.8;
-    for(let i=0;i<parts.length;i++){
-      for(let j=i+1;j<parts.length;j++){
-        const a=parts[i], b=parts[j];
-        const d=Math.hypot(a.x-b.x,a.y-b.y);
-        if(d<cfg.maxLink){
-          ctx.strokeStyle=`rgba(120,170,255,${(1-d/cfg.maxLink)*0.12})`;
-          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      function create(){
+        particles = [];
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        for (let L=0; L<layers.length; L++){
+          const layer = layers[L];
+          for (let i=0;i<layer.count;i++){
+            particles.push({
+              layer: L,
+              x: rand(0,w),
+              y: rand(0,h),
+              vx: rand(-layer.speed, layer.speed),
+              vy: rand(-layer.speed*0.3, layer.speed*0.3),
+              r: rand(layer.size[0], layer.size[1]),
+              a: rand(layer.alpha[0], layer.alpha[1]),
+              blur: layer.blur,
+              baseZ: L // depth index
+            });
+          }
         }
       }
-    }
+      create();
 
-    parts.forEach(p=>{
-      ctx.beginPath();
-      ctx.fillStyle=`rgba(126,231,255,${p.a})`;
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fill();
-    });
+      // mouse parallax
+      let mx = 0, my = 0;
+      window.addEventListener('mousemove', (e)=> {
+        const rect = canvas.getBoundingClientRect();
+        mx = ( (e.clientX - rect.left) / rect.width - 0.5 ) * 2; // -1..1
+        my = ( (e.clientY - rect.top) / rect.height - 0.5 ) * 2;
+      });
 
-    requestAnimationFrame(step);
-  }
-  step();
-})();
-</script>
+      function step(){
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        ctx.clearRect(0,0,w,h);
 
+        // soft background glow
+        // draw faint radial glow at top-left and bottom-right (keeps high-tech feel)
+        const g1 = ctx.createRadialGradient(w*0.12, h*0.12, 0, w*0.12, h*0.12, Math.max(w,h)*0.6);
+        g1.addColorStop(0, 'rgba(126,231,255,0.03)');
+        g1.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g1; ctx.fillRect(0,0,w,h);
+
+        // draw particles grouped by layer (back -> mid -> front)
+        for (let L = layers.length-1; L >= 0; L--){
+          for (const p of particles){
+            if (p.layer !== L) continue;
+            // parallax offset from mouse: deeper layers move less
+            const parallaxFactor = 0.6 - (p.layer * 0.18);
+            const px = p.x + mx * 30 * parallaxFactor;
+            const py = p.y + my * 18 * parallaxFactor;
+            // move
+            p.x += p.vx * (1 + p.layer*0.05);
+            p.y += p.vy * (1 + p.layer*0.05);
+
+            // wrap
+            if (p.x < -30) p.x = w + 30;
+            if (p.x > w + 30) p.x = -30;
+            if (p.y < -30) p.y = h + 30;
+            if (p.y > h + 30) p.y = -30;
+
+            // subtle glow for larger front particles
+            if (p.r > 2.0){
+              ctx.beginPath();
+              const grad = ctx.createRadialGradient(px, py, 0, px, py, p.r*6);
+              grad.addColorStop(0, `rgba(126,231,255,${p.a * 0.9})`);
+              grad.addColorStop(0.5, `rgba(126,231,255,${p.a * 0.18})`);
+              grad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = grad;
+              ctx.fillRect(px - p.r*6, py - p.r*6, p.r*12, p.r*12);
+            }
+
+            // core dot
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(126,231,255,${p.a})`;
+            ctx.arc(px, py, p.r, 0, Math.PI*2);
+            ctx.fill();
+          }
+        }
+
+        // dynamic connecting lines in mid layer only
+        const midLayerIndex = 1;
+        const midParticles = particles.filter(p=>p.layer===midLayerIndex);
+        ctx.lineWidth = 0.9;
+        for (let i=0;i<midParticles.length;i++){
+          for (let j=i+1;j<midParticles.length;j++){
+            const a = midParticles[i], b = midParticles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d = Math.hypot(dx,dy);
+            if (d < 120){
+              const alpha = (1 - d/120) * 0.12;
+              ctx.strokeStyle = `rgba(130,160,255,${alpha})`;
+              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+      step();
+
+      // re-create on resize (for consistent distribution)
+      window.addEventListener('resize', ()=>{
+        resize();
+        create();
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
