@@ -19,9 +19,7 @@
       --maxw:1200px;
       --ease:cubic-bezier(.2,.9,.2,1);
     }
-
-    *{margin:0;padding:0;box-sizing:border-box}
-
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family: Inter, system-ui;
       background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
@@ -29,99 +27,70 @@
       -webkit-font-smoothing:antialiased;
       line-height:1.45;
     }
-
     a{color:var(--accent-c);text-decoration:none}
-
     .container{width:92%;max-width:var(--maxw);margin:0 auto;padding:22px}
 
     header{position:sticky;top:10px;z-index:80}
-
     .topbar{
       display:flex;align-items:center;gap:16px;padding:12px;border-radius:12px;
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(6px);
     }
-
-    .brand{font-weight:900;letter-spacing:0.6px}
-
     nav{margin-left:auto;display:flex;gap:8px}
-    nav a{padding:8px 12px;border-radius:10px;font-weight:700}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:700;color:#dfeaf8}
     nav a:hover{background:rgba(255,255,255,0.05)}
 
-    /* HERO */
     .hero{
       display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:56px 0;
     }
-    @media(max-width:980px){.hero{grid-template-columns:1fr;}.hero-right{height:340px;}}
+    @media(max-width:980px){ .hero{grid-template-columns:1fr;} }
 
-    .hero-left h1{font-size:44px;font-weight:900}
-    .cursor{width:3px;height:38px;background:var(--accent-c);display:inline-block;animation:blink .7s infinite;margin-left:6px}
-    @keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+    .hero-left h1{font-size:44px;font-weight:900;margin-bottom:8px;color:#fff}
+    .typed{display:inline-block}
+    .cursor{width:3px;height:38px;background:var(--accent-c);display:inline-block;margin-left:8px;animation:blink .7s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-    .lead{color:var(--muted);margin-top:12px;max-width:60ch}
+    .lead{color:var(--muted);margin-top:12px;max-width:60ch;font-size:16px}
 
-    .cta-row{display:flex;gap:12px;margin-top:18px}
-
+    .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{padding:11px 18px;border-radius:12px;font-weight:800;cursor:pointer;border:0;transition:.22s}
     .btn-primary{background:linear-gradient(90deg,var(--accent-p),var(--accent-c));color:#041323}
-    .btn-ghost{border:1px solid rgba(255,255,255,0.04)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.05);color:#e6eef8}
+    .btn:hover{transform:translateY(-6px)}
 
     .hero-right{
-      position:relative;border-radius:var(--radius);overflow:hidden;height:420px;
-      background:rgba(255,255,255,0.02);
+      position:relative;height:420px;border-radius:var(--radius);overflow:hidden;
+      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);
+    }
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.26}
+    #techCanvas{position:absolute;inset:0;width:100%;height:100%}
+
+    .section{padding:56px 0}
+    .section h2{font-size:22px;color:var(--accent-p);margin-bottom:8px}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}
+    .proj{
+      background:var(--panel);padding:14px;border-radius:12px;transition:.3s;
       border:1px solid rgba(255,255,255,0.03);
     }
-
-    .hero-video{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.26;
-    }
-
-    /* PROJECTS */
-    .section{padding:56px 0}
-    .section h2{font-size:22px;color:var(--accent-p)}
-
-    .projects-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px;
-    }
-
-    .proj{
-      background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-      transition:.28s;
-    }
-    .proj:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(127,90,240,0.06)}
-
+    .proj:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(127,90,240,0.08)}
     .proj img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .proj h3{margin:8px 0;font-size:17px;color:#fff}
+    .proj p{color:var(--muted);font-size:14px;min-height:48px}
 
-    .proj h3{margin:8px 0 6px;font-size:16px;color:#fff}
-
-    .proj p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.4;
-      margin-bottom:10px; /* Fix for cut text */
-    }
-
-    /* CERTIFICATES */
-    .cert-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px;
-    }
-
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:22px}
     .cert-card{
-      padding:12px;border-radius:12px;background:var(--glass);
-      border:1px solid rgba(255,255,255,0.02);transition:.22s;
+      background:var(--glass);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);
+      display:block;transition:.22s;
     }
     .cert-card:hover{transform:translateY(-6px);box-shadow:0 24px 70px rgba(0,0,0,0.45)}
-
     .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px}
-
     .label{font-weight:800;color:#fff;margin-top:8px}
-
-    .cert-card p{font-size:13px;color:var(--muted);margin-top:6px}
+    .cert-card p{color:var(--muted);font-size:13px;margin-top:6px}
 
     footer{
-      padding:28px;text-align:center;margin-top:28px;
-      color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);
+      padding:26px;text-align:center;margin-top:40px;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.08);font-size:14px;
     }
   </style>
 </head>
@@ -145,16 +114,12 @@
 <!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-left">
-    <h1><span id="typed"></span><span class="cursor"></span></h1>
+    <h1><span id="typed" class="typed"></span><span class="cursor"></span></h1>
     <p class="lead">Engineering digital experiences that speak for themselves.</p>
 
     <div class="cta-row">
-      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-        View Projects
-      </button>
-      <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-        Contact
-      </button>
+      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
     </div>
   </div>
 
@@ -169,7 +134,7 @@
 <!-- PROJECTS -->
 <section id="projects" class="section">
   <h2>Selected Projects</h2>
-  <p class="lead" style="color:var(--muted)">Handpicked projects with demos.</p>
+  <p class="lead">Handpicked projects with demos.</p>
 
   <div class="projects-grid">
 
@@ -214,7 +179,7 @@
 <!-- CERTIFICATES -->
 <section id="certificates" class="section">
   <h2>Certificates</h2>
-  <p class="lead" style="color:var(--muted)">Click a certificate to open.</p>
+  <p class="lead">Click a certificate to open.</p>
 
   <div class="cert-grid">
 
@@ -245,7 +210,7 @@
     <a class="cert-card" href="certificates/copilot_startups.jpg" target="_blank">
       <img class="thumb" src="certificates/copilot_startups.jpg">
       <span class="label">Copilot for Startups</span>
-      <p>Completed Microsoft’s Copilot Startups training and built AI-assisted tools.</p>
+      <p>Completed Microsoft's Copilot Startups program and built AI-powered solutions.</p>
     </a>
 
     <a class="cert-card" href="certificates/Copilot%20Foundations%20Certification.jpg" target="_blank">
@@ -260,37 +225,32 @@
 <!-- CONTACT -->
 <section id="contact" class="section">
   <h2>Contact</h2>
-  <p style="color:var(--muted)">Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
-  <p style="color:var(--muted)">GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank">github.com/aniket4567812-creator</a></p>
+  <p>Email: <a href="mailto:aniket4567812@gmail.com">aniket4567812@gmail.com</a></p>
+  <p>GitHub: <a href="https://github.com/aniket4567812-creator" target="_blank">github.com/aniket4567812-creator</a></p>
 </section>
 
 </main>
 
 <footer>
-  Engineering digital experiences that speak for themselves. ❤️ Aniket Chaudhary
+  © 2025 Aniket Chaudhary • Built with passion, precision, and purpose.
 </footer>
 
 <script>
-/* TYPING EFFECT */
 (function(){
-  const el = document.getElementById('typed');
-  const text = "Hi, I'm Aniket Chaudhary";
-  let i=0, forward=true;
-
+  const el=document.getElementById('typed');
+  const text="Hi, I'm Aniket Chaudhary";
+  let i=0,forward=true;
   function tick(){
-    el.textContent = text.slice(0,i);
-    if(forward){i++; if(i>text.length){forward=false; setTimeout(()=>{},700);}}
-    else{i--; if(i<=0){forward=true;}}
+    el.textContent=text.slice(0,i);
+    if(forward){i++; if(i>text.length){forward=false;setTimeout(()=>i=text.length,700);}}
+    else{i--; if(i<=0){forward=true;i=0;}}
     setTimeout(tick,forward?90:40);
-  }
-  tick();
+  } tick();
 })();
 
-/* PARTICLES */
 (function(){
   const canvas=document.getElementById('techCanvas');
-  if(!canvas)return;
-
+  if(!canvas) return;
   const ctx=canvas.getContext('2d');
   let DPR=window.devicePixelRatio||1;
 
@@ -306,8 +266,7 @@
   let parts=[];
 
   function rand(a,b){return Math.random()*(b-a)+a;}
-
-  function create(){
+  function init(){
     parts=[];
     for(let i=0;i<cfg.count;i++){
       parts.push({
@@ -320,9 +279,9 @@
       });
     }
   }
-  create();
+  init();
 
-  function step(){
+  function animate(){
     ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
 
     parts.forEach(p=>{
@@ -333,14 +292,12 @@
       if(p.y>canvas.clientHeight+10)p.y=-10;
     });
 
-    ctx.lineWidth=0.8;
     for(let i=0;i<parts.length;i++){
       for(let j=i+1;j<parts.length;j++){
-        const a=parts[i], b=parts[j];
-        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        let a=parts[i],b=parts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
         if(d<cfg.maxLink){
           ctx.strokeStyle=`rgba(120,170,255,${(1-d/cfg.maxLink)*0.12})`;
-          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
         }
       }
     }
@@ -352,9 +309,9 @@
       ctx.fill();
     });
 
-    requestAnimationFrame(step);
+    requestAnimationFrame(animate);
   }
-  step();
+  animate();
 })();
 </script>
 
