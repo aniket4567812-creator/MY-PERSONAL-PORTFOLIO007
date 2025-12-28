@@ -397,24 +397,31 @@ footer{
   canvas.height = window.innerHeight;
 
   const shapes = [];
-  const numShapes = 40; // More shapes for heavy effect
+  let numShapes = 40; // Desktop
   const mouse = { x: null, y: null };
+
+  // Mobile detection and optimization
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+  
+  if (isMobile) {
+    numShapes = 15; // Much fewer shapes on mobile
+  }
 
   class GeometricShape {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 120 + 60; // Bigger shapes
-      this.speedX = (Math.random() - 0.5) * 4; // 4x faster
-      this.speedY = (Math.random() - 0.5) * 4;
+      this.size = isMobile ? Math.random() * 80 + 40 : Math.random() * 120 + 60; // Smaller on mobile
+      this.speedX = isMobile ? (Math.random() - 0.5) * 2 : (Math.random() - 0.5) * 4; // Slower on mobile
+      this.speedY = isMobile ? (Math.random() - 0.5) * 2 : (Math.random() - 0.5) * 4;
       this.rotation = Math.random() * Math.PI * 2;
-      this.rotationSpeed = (Math.random() - 0.5) * 0.06; // Faster rotation
-      this.type = Math.floor(Math.random() * 4); // 0: circle, 1: square, 2: triangle, 3: hexagon
-      this.opacity = Math.random() * 0.08 + 0.04; // Subtle for readability
+      this.rotationSpeed = isMobile ? (Math.random() - 0.5) * 0.03 : (Math.random() - 0.5) * 0.06;
+      this.type = Math.floor(Math.random() * 4);
+      this.opacity = isMobile ? Math.random() * 0.05 + 0.02 : Math.random() * 0.08 + 0.04;
       this.color = Math.random() > 0.5 ? [126, 231, 255] : [139, 99, 255];
       this.pulsePhase = Math.random() * Math.PI * 2;
-      this.pulseSpeed = Math.random() * 0.03 + 0.02; // Faster pulsing
-      this.glowIntensity = Math.random() * 15 + 10; // Lighter glow
+      this.pulseSpeed = isMobile ? Math.random() * 0.02 + 0.01 : Math.random() * 0.03 + 0.02;
+      this.glowIntensity = isMobile ? Math.random() * 8 + 5 : Math.random() * 15 + 10;
     }
 
     update() {
@@ -435,8 +442,8 @@ footer{
       this.currentSize = this.size * (1 + Math.sin(this.pulsePhase) * 0.15);
       this.currentOpacity = this.opacity * (1 + Math.sin(this.pulsePhase) * 0.3);
 
-      // Mouse interaction - attraction
-      if (mouse.x !== null) {
+      // Mouse interaction - attraction (disabled on mobile for performance)
+      if (!isMobile && mouse.x !== null) {
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -461,13 +468,15 @@ footer{
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rotation);
 
-      // Heavy glow effect
-      ctx.shadowBlur = this.glowIntensity;
-      ctx.shadowColor = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.currentOpacity * 1.5})`;
+      // Lighter glow on mobile
+      if (!isMobile) {
+        ctx.shadowBlur = this.glowIntensity;
+        ctx.shadowColor = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.currentOpacity * 1.5})`;
+      }
 
       // Outer glow
       ctx.strokeStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.currentOpacity * 0.6})`;
-      ctx.lineWidth = 3;
+      ctx.lineWidth = isMobile ? 2 : 3;
 
       // Inner fill
       ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.currentOpacity * 0.3})`;
@@ -505,9 +514,11 @@ footer{
       ctx.fill();
       ctx.stroke();
 
-      // Extra glow layer
-      ctx.shadowBlur = this.glowIntensity * 2;
-      ctx.stroke();
+      // Extra glow layer only on desktop
+      if (!isMobile) {
+        ctx.shadowBlur = this.glowIntensity * 2;
+        ctx.stroke();
+      }
 
       ctx.restore();
     }
@@ -519,8 +530,8 @@ footer{
   }
 
   function animate() {
-    // Fade trail effect
-    ctx.fillStyle = 'rgba(6, 9, 20, 0.08)';
+    // Fade trail effect (lighter on mobile)
+    ctx.fillStyle = isMobile ? 'rgba(6, 9, 20, 0.15)' : 'rgba(6, 9, 20, 0.08)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     shapes.forEach(shape => {
@@ -534,6 +545,12 @@ footer{
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    // Reinitialize with correct count on orientation change
+    shapes.length = 0;
+    const newCount = window.innerWidth < 768 ? 15 : 40;
+    for (let i = 0; i < newCount; i++) {
+      shapes.push(new GeometricShape());
+    }
   });
 
   window.addEventListener('mousemove', (e) => {
